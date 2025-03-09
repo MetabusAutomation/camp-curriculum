@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Generate - Camp Curriculum Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Generate Camp Activity</h2>
+
+    <div class="card">
+        <h3>Activity Parameters</h3>
+        <form id="activity-form" class="activity-form">
+            <div class="form-group">
+                <label for="saved-ideas">Start from a Saved Idea:</label>
+                <div class="select-with-button">
+                    <select id="saved-ideas">
+                        <option value="">Select a saved idea (optional)</option>
+                        <option value="scavenger-hunt">Nature Scavenger Hunt</option>
+                        <option value="rocket-building">Build a Model Rocket</option>
+                        <option value="team-challenge">Team Building Challenge</option>
+                        <option value="eco-system">Ecosystem in a Bottle</option>
+                    </select>
+                    <button type="button" id="load-idea-btn" class="btn btn-small btn-secondary">Load</button>
+                </div>
+                <small class="input-help">Use a saved idea as a starting point</small>
+            </div>
+
+            <div class="form-group">
+                <label for="activity-title">Activity Title:</label>
+                <input type="text" id="activity-title" required placeholder="e.g., 'Nature Scavenger Hunt'">
+            </div>
+
+            <div class="form-group">
+                <label for="activity-description">Brief Description:</label>
+                <textarea id="activity-description" required rows="3"
+                    placeholder="Describe the general concept of the activity you want to generate"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="age-groups">Age Groups:</label>
+                <input type="text" id="age-groups" placeholder="e.g., '5-7,8-10,11-13' or '5-12'">
+                <small class="input-help">Enter age ranges separated by commas</small>
+            </div>
+
+            <div class="form-group">
+                <label>Themes:</label>
+                <div id="themes-container" class="themes-container">
+                    <!-- Themes will be added here -->
+                </div>
+                <div class="add-theme-control">
+                    <input type="text" id="new-theme" placeholder="Add a theme (e.g., 'Minions')">
+                    <button type="button" id="add-theme-btn" class="btn-icon">+</button>
+                </div>
+            </div>
+
+            <button type="submit" id="generate-btn" class="btn btn-primary">Generate Activity</button>
+        </form>
+    </div>
+
+    <!-- This section is hidden until an activity is generated -->
+    <div id="generated-activity-container" class="card" style="display: none;">
+        <h3>Generated Activity</h3>
+
+        <!-- Modification section -->
+        <div class="modification-section">
+            <div class="form-group">
+                <label for="modification-input">Modify this activity:</label>
+                <textarea id="modification-input" rows="2"
+                    placeholder="Add any specific modifications or requirements..."></textarea>
+            </div>
+            <button id="regenerate-btn" class="btn btn-accent">Regenerate with Modifications</button>
+        </div>
+
+        <div class="activity-result">
+            <h4 id="result-title">Activity Title</h4>
+
+            <div class="activity-meta">
+                <span id="result-age-range">Ages: 8-12</span>
+                <span id="result-occurrences">Occurrences: 2 weeks</span>
+                <span id="result-themes">Themes: Outdoor, Team Building</span>
+            </div>
+
+            <div class="activity-content">
+                <div class="section">
+                    <h5>Description</h5>
+                    <p id="result-description">Activity description will appear here...</p>
+                </div>
+
+                <div class="section">
+                    <h5>Materials Needed</h5>
+                    <ul id="result-materials">
+                        <!-- Materials will be inserted here -->
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h5>Instructions</h5>
+                    <ol id="result-instructions">
+                        <!-- Instructions will be inserted here -->
+                    </ol>
+                </div>
+
+                <div class="section">
+                    <h5>Tips for Counselors</h5>
+                    <ul id="result-tips">
+                        <!-- Tips will be inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-actions">
+            <button id="save-activity-btn" class="btn btn-primary">Save Activity</button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/js/generate.js') }}"></script>
+{% endblock %}

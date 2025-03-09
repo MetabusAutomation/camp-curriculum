@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Collate - Camp Curriculum Generator{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/collate.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Collate Activities</h2>
+
+    <div class="card">
+        <h3>Select Activities to Include</h3>
+        <p>Choose activities to combine into a single document for your camp curriculum.</p>
+
+        <div class="activity-selection">
+            <div class="select-actions">
+                <button class="btn btn-small btn-secondary" id="select-all">Select All</button>
+                <button class="btn btn-small btn-secondary" id="deselect-all">Deselect All</button>
+
+                <!-- Moved collate button to be right-aligned with the selection buttons -->
+                <button class="btn btn-primary" id="generate-document">Collate Selected Activities</button>
+            </div>
+
+            <ul class="selectable-list">
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-1">
+                            <div class="item-details">
+                                <span class="activity-name">Nature Scavenger Hunt</span>
+                                <span class="activity-meta">Outdoor | Ages 8-12 | 45 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-2">
+                            <div class="item-details">
+                                <span class="activity-name">Team Building Challenges</span>
+                                <span class="activity-meta">Group | Ages 10-14 | 60 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-3">
+                            <div class="item-details">
+                                <span class="activity-name">Crafting with Natural Materials</span>
+                                <span class="activity-meta">Arts & Crafts | Ages 6-10 | 30 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-4">
+                            <div class="item-details">
+                                <span class="activity-name">Campfire Stories & Songs</span>
+                                <span class="activity-meta">Evening | All Ages | 45 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-5">
+                            <div class="item-details">
+                                <span class="activity-name">Water Balloon Olympics</span>
+                                <span class="activity-meta">Water | Ages 8-14 | 60 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-6">
+                            <div class="item-details">
+                                <span class="activity-name">Science Experiments</span>
+                                <span class="activity-meta">STEM | Ages 9-13 | 45 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="selectable-item">
+                    <div class="item-content">
+                        <div class="item-main">
+                            <input type="checkbox" class="activity-checkbox" id="activity-7">
+                            <div class="item-details">
+                                <span class="activity-name">Survival Skills Workshop</span>
+                                <span class="activity-meta">Outdoor | Ages 10-16 | 90 mins</span>
+                            </div>
+                        </div>
+                        <div class="item-planning">
+                            <div class="planning-field">
+                                <label>Occurrences (weeks)</label>
+                                <input type="number" class="occurrences-input" min="1" max="12" value="1">
+                            </div>
+                            <div class="planning-field">
+                                <label>Number of Campers</label>
+                                <input type="number" class="campers-input" min="1" value="20">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Materials List Preview Section -->
+        <div class="materials-list-section" id="materials-preview">
+            <h4>Combined Materials List</h4>
+            <p class="materials-intro">Here's a preview of all the materials you'll need:</p>
+
+            <div class="materials-container">
+                <table class="materials-table">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Quantity</th>
+                            <th>Activities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Paper (sheets)</td>
+                            <td>50</td>
+                            <td>Crafting, Science Experiments</td>
+                        </tr>
+                        <tr>
+                            <td>Markers (set)</td>
+                            <td>5</td>
+                            <td>Crafting, Scavenger Hunt</td>
+                        </tr>
+                        <tr>
+                            <td>Water Balloons (pack)</td>
+                            <td>10</td>
+                            <td>Water Balloon Olympics</td>
+                        </tr>
+                        <tr>
+                            <td>Rope (feet)</td>
+                            <td>100</td>
+                            <td>Team Building, Survival Skills</td>
+                        </tr>
+                        <tr>
+                            <td>Scissors</td>
+                            <td>10</td>
+                            <td>Crafting, Science Experiments</td>
+                        </tr>
+                        <tr>
+                            <td>Flashlights</td>
+                            <td>8</td>
+                            <td>Campfire, Survival Skills</td>
+                        </tr>
+                        <tr>
+                            <td>Magnifying Glasses</td>
+                            <td>12</td>
+                            <td>Science Experiments, Scavenger Hunt</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="materials-actions">
+                    <button class="btn btn-small btn-export" id="export-materials">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export Materials as CSV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', path='/js/collate.js') }}"></script>
+{% endblock %}

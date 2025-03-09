@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Find Activity Ideas - Camp Curriculum Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Find Activity Ideas</h2>
+
+    <div class="card">
+        <h3>Camp Parameters</h3>
+        <p>Set your camp parameters to find activity ideas that match your needs</p>
+        <form id="camp-settings-form" class="settings-form">
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="min-age">Minimum Age</label>
+                    <input type="number" id="min-age" min="5" max="17" value="8">
+                </div>
+                <div class="form-group half-width">
+                    <label for="max-age">Maximum Age</label>
+                    <input type="number" id="max-age" min="6" max="18" value="12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="major-theme">Major Theme</label>
+                <select id="major-theme">
+                    <option value="stem">STEM</option>
+                    <option value="sports">Sports & Recreation</option>
+                    <option value="arts">Arts & Creativity</option>
+                    <option value="nature">Nature & Environment</option>
+                    <option value="leadership">Leadership & Team Building</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Secondary Focus Areas</label>
+                <div id="secondary-foci-container">
+                    <div class="focus-entry">
+                        <input type="text" class="focus-input" placeholder="e.g., Outdoor Activities">
+                        <button type="button" class="btn-remove-focus">✕</button>
+                    </div>
+                </div>
+                <button type="button" id="add-focus" class="btn btn-small btn-secondary">Add Another Focus</button>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Camp Settings</button>
+                <button type="button" id="find-ideas-btn" class="btn btn-accent">Find Activity Ideas</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="search-results-container">
+        <div class="card results-section">
+            <h3>New Activity Ideas</h3>
+            <p class="hint-text">Find ideas to use as starting points for generating activities</p>
+
+            <ul class="activity-results" id="new-results">
+                <li class="activity-result-item">
+                    <div class="result-content">
+                        <h4>Build a Model Rocket</h4>
+                        <p>Students design, build, and launch simple model rockets using household materials, learning
+                            about physics and aerodynamics.</p>
+                    </div>
+                    <button class="btn-save-activity">Save Idea</button>
+                </li>
+
+                <li class="activity-result-item">
+                    <div class="result-content">
+                        <h4>Ecosystem in a Bottle</h4>
+                        <p>Create self-contained ecosystems in recycled plastic bottles, observing the water cycle and
+                            plant growth over time.</p>
+                    </div>
+                    <button class="btn-save-activity">Save Idea</button>
+                </li>
+
+                <li class="activity-result-item">
+                    <div class="result-content">
+                        <h4>Simple Circuit Challenge</h4>
+                        <p>Introduction to electrical circuits where campers create working circuits using batteries,
+                            LED lights, and other components.</p>
+                    </div>
+                    <button class="btn-save-activity">Save Idea</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card results-section">
+            <h3>Saved Ideas</h3>
+            <p class="hint-text">Ideas you've saved to use in the Generate Activity page</p>
+
+            <ul class="activity-results" id="saved-results">
+                <li class="activity-result-item">
+                    <div class="result-content">
+                        <h4>Nature Scavenger Hunt</h4>
+                        <p>An outdoor activity where campers search for specific natural items, learning about local
+                            ecology and plant identification.</p>
+                    </div>
+                    <button class="btn-delete-activity">Delete</button>
+                </li>
+
+                <li class="activity-result-item">
+                    <div class="result-content">
+                        <h4>Marshmallow Tower Challenge</h4>
+                        <p>Teams compete to build the tallest free-standing structure using only marshmallows and
+                            uncooked spaghetti.</p>
+                    </div>
+                    <button class="btn-delete-activity">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/js/find.js') }}"></script>
+{% endblock %}

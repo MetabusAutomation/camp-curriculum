@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}Your Activities - Camp Curriculum Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h2>Your Activities</h2>
+    </div>
+
+    <!-- Undo notification -->
+    <div class="undo-notification hidden" id="undo-notification">
+        <span id="undo-message">Activity deleted.</span>
+        <button class="btn btn-small" id="undo-button">Undo</button>
+    </div>
+
+    <!-- Activity Details Section -->
+    <div class="card activity-details-card hidden" id="activity-details">
+        <div class="activity-details-header">
+            <h3 id="detail-title">Activity Title</h3>
+            <div class="activity-details-actions">
+                <button class="btn btn-small btn-secondary" id="minimize-details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Minimize
+                </button>
+            </div>
+        </div>
+
+        <div class="activity-detail-content">
+            <div class="activity-meta-details">
+                <span class="activity-type" id="detail-type">Activity Type</span>
+                <span class="activity-age" id="detail-age">Age Range</span>
+                <span class="activity-duration" id="detail-duration">Duration</span>
+            </div>
+
+            <div class="detail-section">
+                <h4>Description</h4>
+                <p id="detail-description">Activity description will appear here.</p>
+            </div>
+
+            <div class="detail-section">
+                <h4>Objectives</h4>
+                <ul id="detail-objectives">
+                    <li>Objective 1</li>
+                    <li>Objective 2</li>
+                    <li>Objective 3</li>
+                </ul>
+            </div>
+
+            <div class="detail-section">
+                <h4>Materials Needed</h4>
+                <ul id="detail-materials">
+                    <li>Material 1</li>
+                    <li>Material 2</li>
+                    <li>Material 3</li>
+                </ul>
+            </div>
+
+            <div class="detail-section">
+                <h4>Instructions</h4>
+                <ol id="detail-instructions">
+                    <li>Step 1</li>
+                    <li>Step 2</li>
+                    <li>Step 3</li>
+                </ol>
+            </div>
+
+            <div class="detail-section">
+                <h4>Tips for Counselors</h4>
+                <p id="detail-tips">Tips will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="activities-header">
+            <h3>Saved Activities</h3>
+            <div class="activities-actions">
+                <button class="btn btn-small btn-accent" id="upload-activity">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Upload Activity
+                </button>
+                <button class="btn btn-small btn-gold hidden" id="save-changes">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-svg">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+
+        <p class="hint-text">Select an activity to view details. Mark one as favorite to use as reference for future
+            generations.</p>
+
+        <div class="activities-list">
+            <div class="activity-item" data-activity-id="1">
+                <div class="activity-content">
+                    <div class="activity-title-row">
+                        <h4>Nature Scavenger Hunt</h4>
+                        <div class="activity-actions">
+                            <button class="btn-delete" data-activity-id="1" title="Delete activity">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="btn-favorite" data-activity-id="1" title="Mark as favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Outdoor</span>
+                        <span class="activity-age">Ages 8-12</span>
+                        <span class="activity-duration">45 mins</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-item" data-activity-id="2">
+                <div class="activity-content">
+                    <div class="activity-title-row">
+                        <h4>Team Building Challenges</h4>
+                        <div class="activity-actions">
+                            <button class="btn-delete" data-activity-id="2" title="Delete activity">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="btn-favorite" data-activity-id="2" title="Mark as favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Group</span>
+                        <span class="activity-age">Ages 10-14</span>
+                        <span class="activity-duration">60 mins</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-item" data-activity-id="3">
+                <div class="activity-content">
+                    <div class="activity-title-row">
+                        <h4>Crafting with Natural Materials</h4>
+                        <div class="activity-actions">
+                            <button class="btn-delete" data-activity-id="3" title="Delete activity">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="btn-favorite" data-activity-id="3" title="Mark as favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Arts & Crafts</span>
+                        <span class="activity-age">Ages 6-10</span>
+                        <span class="activity-duration">30 mins</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-item" data-activity-id="4">
+                <div class="activity-content">
+                    <div class="activity-title-row">
+                        <h4>Campfire Stories & Songs</h4>
+                        <div class="activity-actions">
+                            <button class="btn-delete" data-activity-id="4" title="Delete activity">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="btn-favorite favorite-active" data-activity-id="4"
+                                title="Marked as favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Evening</span>
+                        <span class="activity-age">All Ages</span>
+                        <span class="activity-duration">45 mins</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-item" data-activity-id="5">
+                <div class="activity-content">
+                    <div class="activity-title-row">
+                        <h4>Water Balloon Olympics</h4>
+                        <div class="activity-actions">
+                            <button class="btn-delete" data-activity-id="5" title="Delete activity">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="btn-favorite" data-activity-id="5" title="Mark as favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Water</span>
+                        <span class="activity-age">Ages 8-14</span>
+                        <span class="activity-duration">60 mins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/js/activities.js') }}"></script>
+{% endblock %}

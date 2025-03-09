@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Camp Curriculum Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome to Camp Curriculum Generator</h2>
+
+    <div class="card">
+        <h3>Getting Started</h3>
+        <p>Create a custom camp curriculum in these easy steps:</p>
+        <ol>
+            <li><a href="/find"><span class="highlight">Find activity ideas</span></a> for your camp that match your
+                requirements</li>
+            <li><a href="/generate"><span class="highlight">Generate and customize</span></a> new activities based on
+                your preferences</li>
+            <li><a href="/activities"><span class="highlight">Manage your activities</span></a> - view, favorite
+                (informing the generator), and
+                optionally upload existing activities</li>
+            <li><a href="/collate"><span class="highlight">Collate</span></a> your activities into a single document,
+                including a comprehensive materials spreadsheet with quantities based on camper count and number of
+                weeks</li>
+        </ol>
+
+    </div>
+</div>
+{% endblock %}
